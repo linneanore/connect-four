@@ -49,4 +49,25 @@ export class board {
         }
         return false;
     }
+
+    //Method for checking a specific direcion
+    private checkDirection(row: number, col: number, player: number, dRow: number, dCol: number): boolean {
+        // count pieces in current direction
+        let count = 0; 
+        for (let i = 0; i < 4; i++) {
+            //Calculating row positions
+            const r = row + i * dRow; 
+            //Calculating column positions
+            const c = col + i * dCol;
+
+            if (r >= 0 && r < this.rows && c >= 0 && c < this.columns && this.grid[r][c] === player) {
+                count++;
+            } else {
+                //Stopping if any condition isnt met
+                break;
+            }
+        }
+        //Returning true if 4 pieces is in a row
+        return count === 4;
+    }
 }

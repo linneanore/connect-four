@@ -70,4 +70,9 @@ export class board {
         //Returning true if 4 pieces is in a row
         return count === 4;
     }
+
+    //Method checking if board is full
+    public isFull(): boolean {
+        return this.grid[0].every(cell => cell !== 0);
+    }
 }

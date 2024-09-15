@@ -17,4 +17,22 @@ export class game {
         this.currentPlayer = player1;
         this.prompt = prompt({ sigint: true });
     }
+
+    //Game loop
+    public play(): void {
+        while (true) {
+            //Print current board
+            this.board.printBoard();
+            //Getting column input from player or AI
+            const columnInput = this.currentPlayer instanceof AI
+            ? this.currentPlayer.getMove(this.board) // AI makes move
+            : parseInt(this.prompt(`${this.currentPlayer.name}, choose a column (0-6): `), 10); //Player input
+
+            //Validating the input
+            if (isNaN(columnInput) || columnInput < 0 || columnInput > 6 || !this.board.dropPiece(columnInput, this.currentPlayer.id)) {
+                console.log("Invalid move, please try again.");
+                continue;
+            }
+        }
+    }
 }

@@ -33,6 +33,15 @@ export class game {
                 console.log("Invalid move, please try again.");
                 continue;
             }
+
+            //Checking for winning move
+            if (this.board.isWinningMove(this.currentPlayer.id)) {
+                this.board.printBoard(); 
+                //Announcing winner
+                console.log(`${this.currentPlayer.name} wins!`);
+                //Exiting the game
+                break;
+            }
         }
     }
 }

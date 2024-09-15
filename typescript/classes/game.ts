@@ -1,7 +1,7 @@
 import { board } from "./board";
 import { player } from "./player";
 import { AI } from "./ai";
-import prompt from 'prompt-synq';
+import prompt from '../helpers/prompt-sync';
 
 export class game {
     private board: board;

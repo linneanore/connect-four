@@ -1,7 +1,7 @@
 import { board } from "./board";
 
 export class AI {
-    private playerID: number;
+    private playerId: number;
 
     constructor(playerId:number) {
         this.playerId = playerId;

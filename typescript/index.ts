@@ -21,3 +21,7 @@ if(player2Choice.toLowerCase() === 'a') {
     //Creating player 2
     player2 = new player(player2Name, 2);
 }
+// Creating new game
+const game = new game(player1, player2);
+//Starting the game loop
+game.play();

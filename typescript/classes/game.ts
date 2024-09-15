@@ -42,6 +42,13 @@ export class game {
                 //Exiting the game
                 break;
             }
+
+            //Checking for a draw
+            if (this.board.isFull()) {
+                this.board.printBoard();
+                console.log("It's a draw!");
+                break;
+            }
         }
     }
 }

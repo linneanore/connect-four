@@ -1,4 +1,4 @@
-export class board {
+export class Board {
     private grid: number[][];
     private readonly rows = 6;
     private readonly columns = 7;

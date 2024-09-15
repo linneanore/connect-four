@@ -1,4 +1,4 @@
-import { board } from "./board";
+import { Board } from "./board";
 
 export class AI {
     private playerId: number;
@@ -8,7 +8,7 @@ export class AI {
     }
 
     //Method for AI to make move in random column
-    public getMove(board: board): number {
+    public getMove(board: Board): number {
         const emptyColumns: number[] = [];
         for (let col = 0; col < 7; col++) {
             if (board['grid'] [0] [col] === 0) {
@@ -17,8 +17,18 @@ export class AI {
                 // add it to list of empty columns
             }
         } 
+
+        if (emptyColumns.length === 0) {
+            throw new Error("No valid moves available");
+        }
+        
         const randomIndex = Math.floor(Math.random() * emptyColumns.length);
-        //Randomly select an empty column
-        return emptyColumns[randomIndex]; 
+        //Randomly select a column thats empty
+        const selectedColumn = emptyColumns[randomIndex];
+
+        console.log(`AI (Player ID: ${this.playerId}) has selected column:
+    ${selectedColumn}`);
+
+    return selectedColumn;
     }
 }

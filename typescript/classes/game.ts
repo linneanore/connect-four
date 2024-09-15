@@ -1,17 +1,17 @@
-import { board } from "./board";
-import { player } from "./player";
+import { Board } from "./board";
+import { Player } from "./player";
 import { AI } from "./ai";
 import prompt from 'prompt-sync';
 
-export class game {
-    private board: board;
-    private player1: player;
-    private player2: player | AI;
-    private currentPlayer: player | AI;
+export class Game {
+    private board: Board;
+    private player1: Player;
+    private player2: Player | AI;
+    private currentPlayer: Player | AI;
     private prompt: any;
 
-    constructor(player1: player, player2: player | AI) {
-        this.board = new board();
+    constructor(player1: Player, player2: Player | AI) {
+        this.board = new Board();
         this.player1 = player1;
         this.player2 = player2;
         this.currentPlayer = player1;
@@ -30,23 +30,25 @@ export class game {
 
             //Validating the input
             if (
+
                 isNaN(columnInput) ||
                 columnInput < 0 ||
                 columnInput > 6 ||
-                !(this.currentPlayer instanceof player ? this.board.dropPiece(columnInput,
-                    this.currentPlayer.id) : false)
+                !this.board.dropPiece(columnInput, this.currentPlayer instanceof Player ?
+                    this.currentPlayer.id : -1)
+
             ) {
                 console.log("Invalid move, try again.");
+                continue;
             }
-        }
 
             //Checking for winning move
-            if (this.currentPlayer instanceof player && 
+            if (this.currentPlayer instanceof Player && 
                 this.board.isWinningMove(this.currentPlayer.id)) {
                     this.board.printBoard();
                     console.log(`${this.currentPlayer.name} wins!`);
                     break;
-                }
+                
             }
 
             //Checking for a draw
@@ -57,8 +59,8 @@ export class game {
             }
 
             //Switching to other player
-            this.currentPlayer = this.currentPlayer === this.player1 ?
-            this.player2 : this.player1; //Alternating players
+           this.currentPlayer = this.currentPlayer === this.player1 ? this.player2 :
+           this.player1;
         }
     }
 }

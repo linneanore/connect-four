@@ -29,10 +29,16 @@ export class game {
             : parseInt(this.prompt(`${this.currentPlayer.name}, choose a column (0-6): `), 10); //Player input
 
             //Validating the input
-            if (isNaN(columnInput) || columnInput < 0 || columnInput > 6 || !this.board.dropPiece(columnInput, this.currentPlayer.id)) {
-                console.log("Invalid move, please try again.");
-                continue;
+            if (
+                isNaN(columnInput) ||
+                columnInput < 0 ||
+                columnInput > 6 ||
+                !(this.currentPlayer instanceof player ? this.board.dropPiece(columnInput,
+                    this.currentPlayer.id) : false)
+            ) {
+                console.log("Invalid move, try again.");
             }
+        }
 
             //Checking for winning move
             if (this.currentPlayer instanceof player && 

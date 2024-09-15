@@ -35,12 +35,12 @@ export class game {
             }
 
             //Checking for winning move
-            if (this.board.isWinningMove(this.currentPlayer.id)) {
-                this.board.printBoard(); 
-                //Announcing winner
-                console.log(`${this.currentPlayer.name} wins!`);
-                //Exiting the game
-                break;
+            if (this.currentPlayer instanceof player && 
+                this.board.isWinningMove(this.currentPlayer.id)) {
+                    this.board.printBoard();
+                    console.log(`${this.currentPlayer.name} wins!`);
+                    break;
+                }
             }
 
             //Checking for a draw

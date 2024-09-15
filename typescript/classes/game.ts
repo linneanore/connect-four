@@ -49,6 +49,10 @@ export class game {
                 console.log("It's a draw!");
                 break;
             }
+
+            //Switching to other player
+            this.currentPlayer = this.currentPlayer === this.player1 ?
+            this.player2 : this.player1; //Alternating players
         }
     }
 }

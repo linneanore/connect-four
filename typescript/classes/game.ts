@@ -1,7 +1,7 @@
 import { board } from "./board";
 import { player } from "./player";
 import { AI } from "./ai";
-import prompt from '../helpers/prompt-sync';
+import prompt from 'prompt-sync';
 
 export class game {
     private board: board;
@@ -10,7 +10,7 @@ export class game {
     private currentPlayer: player | AI;
     private prompt: any;
 
-    constructor(player1: player, player2, player | AI) {
+    constructor(player1: player, player2: player | AI) {
         this.board = new board();
         this.player1 = player1;
         this.player2 = player2;

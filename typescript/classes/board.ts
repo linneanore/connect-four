@@ -31,4 +31,22 @@ export class board {
         //Cannot drop piece if column is full
         return false;
     }
+
+    // Method checks if move is resulting in win
+    public isWinningMove(player: number): boolean {
+        for (let row = 0; row < this.rows; row++) {
+            for (let col = 0; col < this.columns; col++) {
+                //Checking all directions for winning combination
+                if (
+                    this.checkDirection(row, col, player, 1, 0) || //Horizontal
+                    this.checkDirection(row, col, player, 0, 1) || //Vertical
+                    this.checkDirection(row, col, player, 1, 1) || //Diagonal
+                    this.checkDirection(row, col, player, 1, -1) //Diagonal
+                ) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

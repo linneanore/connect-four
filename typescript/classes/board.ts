@@ -13,9 +13,9 @@ export class Board {
         console.clear();
         console.log("Current Board:");
         for (let row of this.grid.reverse()) {
-            console.log(row.map(cell => (cell === 0 ? '.' : cell)).join(' '));
+            console.log("| " + row.map(cell => (cell === 0 ? '.' : cell)).join('|') + " |");
         }
-        console.log('0 1 2 3 4 5 6');
+        console.log(" 0 1 2 3 4 5 6 ");
     }
 
     //Method to drop piece into column

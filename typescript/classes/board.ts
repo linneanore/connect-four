@@ -12,22 +12,27 @@ export class Board {
     public printBoard(): void {
         console.clear();
         console.log("Current Board:");
-        for (let row of this.grid.reverse()) {
-            console.log("| " + row.map(cell => {
-                if (cell === 0) return '.';
-                if (cell === 1) return 'O'; 
-                if (cell === 2) return 'X'; 
-                return '';
-            }).join(' | ') + " |");
-        }
-        console.log(" 0 1 2 3 4 5 6 ");
+
+    for (let row of this.grid.reverse()) {
+        console.log("|" + row.map(cell => {
+            if (cell === 0) return "   "; // Empty space
+            if (cell === 1) return " O "; // Player 1
+            if (cell === 2) return " X "; // Player 2 (AI)
+            return "   "; // Should not happen
+        }).join("|") + "|"); // Join with vertical bars
+        console.log("+---+---+---+---+---+---+---+"); 
+    }
+  
+    // Print column indices with spacing
+    console.log("  0   1   2   3   4   5   6  "); 
     }
 
     //Method to drop piece into column
     public dropPiece(column: number, player: number): boolean {
-        for (let row = 0; row < this.rows; row++) {
+        //starting from the bottom and looking for empty space
+        for (let row = this.rows - 1; row >= 0; row--) {
             //Finding the first empty spot
-            if (this.grid[row] [column] === 0) {
+            if (this.grid[row][column] === 0) {
                 //Places the players piece
                 this.grid[row][column] = player;
                 return true;

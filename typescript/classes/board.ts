@@ -13,7 +13,12 @@ export class Board {
         console.clear();
         console.log("Current Board:");
         for (let row of this.grid.reverse()) {
-            console.log("| " + row.map(cell => (cell === 0 ? '.' : cell)).join('|') + " |");
+            console.log("| " + row.map(cell => {
+                if (cell === 0) return '.';
+                if (cell === 1) return 'O'; 
+                if (cell === 2) return 'X'; 
+                return '';
+            }).join(' | ') + " |");
         }
         console.log(" 0 1 2 3 4 5 6 ");
     }

@@ -13,13 +13,13 @@ export class Board {
         console.clear();
         console.log("Current Board:");
 
-    for (let row of this.grid.reverse()) {
+    for (let row of this.grid) {
         console.log("|" + row.map(cell => {
             if (cell === 0) return "   "; // Empty space
             if (cell === 1) return " O "; // Player 1
             if (cell === 2) return " X "; // Player 2 (AI)
-            return "   "; // Should not happen
-        }).join("|") + "|"); // Join with vertical bars
+            return "   "; 
+        }).join("|") + "|"); 
         console.log("+---+---+---+---+---+---+---+"); 
     }
   

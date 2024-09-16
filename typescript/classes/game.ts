@@ -35,7 +35,7 @@ export class Game {
                 columnInput < 0 ||
                 columnInput > 6 ||
                 !this.board.dropPiece(columnInput, this.currentPlayer instanceof Player ?
-                    this.currentPlayer.id : -1)
+                    this.currentPlayer.id : this.currentPlayer.getPlayerId())
 
             ) {
                 console.log("Invalid move, try again.");

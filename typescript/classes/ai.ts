@@ -7,11 +7,16 @@ export class AI {
         this.playerId = playerId;
     }
 
+    public getPlayerId(): number{
+        return this.playerId;
+    }
+
     //Method for AI to make move in random column
     public getMove(board: Board): number {
         const emptyColumns: number[] = [];
+        const rows = board['rows'];
         for (let col = 0; col < 7; col++) {
-            if (board['grid'] [0] [col] === 0) {
+            if (board['grid'] [rows - 1][col] === 0) {
                 //If the column is not full
                 emptyColumns.push(col); 
                 // add it to list of empty columns
